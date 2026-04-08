@@ -1,0 +1,21 @@
+[project]
+name = "znxcpxmf"
+version = "0.1.0"
+description = "Minimal FastAPI starter with typed item APIs."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.111,<1.0",
+  "pydantic>=2.7,<3.0",
+  "uvicorn[standard]>=0.29,<1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.2,<9.0",
+  "httpx>=0.27,<1.0",
+]
+
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
