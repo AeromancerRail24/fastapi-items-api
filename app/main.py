@@ -1,3 +1,16 @@
 from fastapi import FastAPI
 
-app = FastAPI()
+from app.api.routes import api_router
+from app.core.config import Settings
+
+
+settings = Settings()
+
+
+def create_app() -> FastAPI:
+    app = FastAPI(title=settings.app_name, version=settings.version)
+    app.include_router(api_router)
+    return app
+
+
+app = create_app()
