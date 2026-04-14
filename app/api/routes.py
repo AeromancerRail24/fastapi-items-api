@@ -19,3 +19,11 @@ def list_items() -> list[ItemResponse]:
 
     service = ItemService()
     return service.list_items()
+
+
+@api_router.post("/items", response_model=ItemResponse, status_code=201, tags=["items"])
+def create_item(payload: ItemCreate) -> ItemResponse:
+    from app.services.item_service import ItemService
+
+    service = ItemService()
+    return service.create_item(payload)
