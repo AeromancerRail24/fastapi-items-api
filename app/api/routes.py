@@ -27,3 +27,11 @@ def create_item(payload: ItemCreate) -> ItemResponse:
 
     service = ItemService()
     return service.create_item(payload)
+
+
+@api_router.get("/items/{item_id}", response_model=ItemResponse, tags=["items"])
+def get_item(item_id: int) -> ItemResponse:
+    from app.services.item_service import ItemNotFoundError, ItemService
+
+    service = ItemService()
+    return service.get_item(item_id)
