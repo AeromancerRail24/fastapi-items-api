@@ -31,7 +31,15 @@ def create_item(payload: ItemCreate) -> ItemResponse:
 
 @api_router.get("/items/{item_id}", response_model=ItemResponse, tags=["items"])
 def get_item(item_id: int) -> ItemResponse:
-    from app.services.item_service import ItemNotFoundError, ItemService
+    from app.services.item_service import ItemService
 
     service = ItemService()
     return service.get_item(item_id)
+
+
+@api_router.delete("/items/{item_id}", status_code=204, tags=["items"])
+def delete_item(item_id: int) -> None:
+    from app.services.item_service import ItemService
+
+    service = ItemService()
+    service.delete_item(item_id)
