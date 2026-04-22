@@ -32,3 +32,26 @@ def test_create_item_persists_and_returns_payload() -> None:
         "description": "Blue cover",
         "price": 19.5,
     }
+
+
+def test_get_item_by_id_returns_the_same_record() -> None:
+    created = client.post(
+        "/items",
+        json={"name": "Blue pen", "description": "0.7mm", "price": 2.5},
+    )
+
+    response = client.get(f"/items/{created.json()['id']}")
+
+    assert response.status_code == 200
+    assert response.json() == created.json()
+
+
+def test_delete_item_removes_item() -> None:
+    created = client.post(
+        "/items",
+        json={"name": "Tape", "description": "Clear", "price": 3.3},
+    )
+
+    delete_response = client.delete(f"/items/{created.json()['id']}")
+    assert delete_response.status_code == 204
+    assert client.get(f"/items/{created.json()['id']}").status_code == 404
