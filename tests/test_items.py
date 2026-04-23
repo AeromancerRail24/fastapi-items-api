@@ -55,3 +55,13 @@ def test_delete_item_removes_item() -> None:
     delete_response = client.delete(f"/items/{created.json()['id']}")
     assert delete_response.status_code == 204
     assert client.get(f"/items/{created.json()['id']}").status_code == 404
+
+
+def test_create_item_validation_error() -> None:
+    response = client.post(
+        "/items",
+        json={"name": "", "description": "No name", "price": 5.0},
+    )
+
+    assert response.status_code == 422
+    assert response.json()["detail"][0]["type"] == "string_too_short"
