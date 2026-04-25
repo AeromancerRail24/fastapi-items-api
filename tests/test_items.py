@@ -57,6 +57,12 @@ def test_delete_item_removes_item() -> None:
     assert client.get(f"/items/{created.json()['id']}").status_code == 404
 
 
+def test_missing_item_returns_404() -> None:
+    response = client.get("/items/999")
+    assert response.status_code == 404
+    assert response.json()["detail"] == "Item 999 does not exist"
+
+
 def test_create_item_validation_error() -> None:
     response = client.post(
         "/items",
@@ -65,3 +71,13 @@ def test_create_item_validation_error() -> None:
 
     assert response.status_code == 422
     assert response.json()["detail"][0]["type"] == "string_too_short"
+
+
+def test_create_item_price_validation_error() -> None:
+    response = client.post(
+        "/items",
+        json={"name": "Bad item", "description": "Too cheap", "price": -7.0},
+    )
+
+    assert response.status_code == 422
+    assert response.json()["detail"][0]["type"] == "greater_than_equal"
