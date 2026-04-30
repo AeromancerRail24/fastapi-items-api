@@ -2,11 +2,22 @@
 
 Minimal FastAPI starter with typed item APIs.
 
-## Run locally
+## Install dependencies
 
 ```bash
 python -m pip install -r requirements.txt
+```
+
+## Run locally
+
+```bash
 uvicorn app.main:app --reload
+```
+
+## Run tests
+
+```bash
+pytest
 ```
 
 Once running, open: `http://127.0.0.1:8000/docs`
