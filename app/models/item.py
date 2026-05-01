@@ -8,3 +8,4 @@ class Item(BaseModel):
     name: str = Field(min_length=1)
     description: str | None = None
     price: float = Field(ge=0)
+    available: bool = True
