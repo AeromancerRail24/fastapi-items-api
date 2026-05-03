@@ -31,6 +31,7 @@ def test_create_item_persists_and_returns_payload() -> None:
         "name": "Starter notebook",
         "description": "Blue cover",
         "price": 19.5,
+        "available": True,
     }
 
 
