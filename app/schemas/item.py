@@ -7,6 +7,7 @@ class ItemCreate(BaseModel):
     name: str = Field(min_length=1, max_length=80)
     description: str | None = None
     price: float = Field(ge=0)
+    available: bool = True
 
 
 class ItemResponse(BaseModel):
@@ -16,3 +17,4 @@ class ItemResponse(BaseModel):
     name: str
     description: str | None = None
     price: float
+    available: bool

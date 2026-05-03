@@ -24,6 +24,7 @@ class ItemService:
                 name=payload.name,
                 description=payload.description,
                 price=payload.price,
+                available=payload.available,
             )
         )
 
