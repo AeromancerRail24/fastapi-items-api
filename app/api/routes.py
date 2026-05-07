@@ -1,9 +1,12 @@
 from fastapi import APIRouter, HTTPException, status
 
+from app.core.config import Settings
 from app.schemas.item import ItemCreate, ItemResponse
 from app.services.item_service import ItemNotFoundError, ItemService
 
 api_router = APIRouter()
+
+settings = Settings()
 
 
 def _item_service() -> ItemService:
@@ -18,7 +21,8 @@ def _not_found(error: Exception) -> None:
 def healthcheck() -> dict[str, str]:
     return {
         "status": "ready",
-        "service": "znxcpxmf",
+        "service": settings.app_name,
+        "environment": settings.environment,
     }
 
 
