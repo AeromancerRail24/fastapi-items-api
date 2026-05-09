@@ -12,5 +12,6 @@ def test_health_endpoint_returns_ready() -> None:
     assert response.status_code == 200
     assert response.json() == {
         "status": "ready",
-        "service": "znxcpxmf",
+        "service": "Znxcpxmf API",
+        "environment": "development",
     }
