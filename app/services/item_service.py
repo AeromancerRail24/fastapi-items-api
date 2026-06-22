@@ -3,7 +3,7 @@ from app.models.item import Item
 from app.schemas.item import ItemCreate
 
 
-class ItemNotFoundError(KeyError):
+class ItemNotFoundError(Exception):
     pass
 
 

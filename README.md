@@ -1,6 +1,6 @@
-# znxcpxmf
+# fastapi-items-api
 
-Minimal FastAPI starter with typed item APIs.
+A minimal FastAPI service with typed item APIs.
 
 ## Install dependencies
 

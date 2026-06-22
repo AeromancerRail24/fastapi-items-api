@@ -1,7 +1,7 @@
 [project]
-name = "znxcpxmf"
+name = "fastapi-items-api"
 version = "0.1.0"
-description = "Minimal FastAPI starter with typed item APIs."
+description = "A minimal FastAPI service with typed item APIs."
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
